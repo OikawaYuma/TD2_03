@@ -1,20 +1,8 @@
-﻿#include "fun.h"
+﻿#include "function.h"
 #include<Windows.h>
 #include <string>
 
-// ウィンドウプロシージャ
-LRESULT CALLBACK WindowProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
-	// メッセージに応じてゲーム固有の処理を行う
-	switch (msg) {
-		// ウィンドウが破棄された
-	case WM_DESTROY:
-		// OSに対して、アプリ終了を伝える
-		PostQuitMessage(0);
-		return 0;
-	}
-	// 標準のメッセージ処理を行う
-	return DefWindowProc(hwnd, msg, wparam, lparam);
-}
+
 
 
 
@@ -50,4 +38,8 @@ std::string ConvertString(const std::wstring& str)
 	std::string result(sizeNeeded, 0);
 	WideCharToMultiByte(CP_UTF8, 0, str.data(), static_cast<int>(str.size()), result.data(), sizeNeeded, NULL, NULL);
 	return result;
+}
+
+void Log(const std::string& message) {
+	OutputDebugStringA(message.c_str());
 }

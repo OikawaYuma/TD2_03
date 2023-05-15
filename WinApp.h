@@ -5,8 +5,11 @@
 class WinApp
 {
 public:
-	WinApp();
+	
+	static LRESULT WindowProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
+	WinApp(const wchar_t* label);
 	~WinApp();
+
 	WNDCLASS wc{};
 
 	// クライアント領域のサイズ
@@ -15,6 +18,7 @@ public:
 	
 
 };
+
 
 
 

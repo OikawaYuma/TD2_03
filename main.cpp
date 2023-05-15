@@ -8,7 +8,7 @@
 // Windowsアプリでのエントリーポイント（main関数）
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
-	WinApp *winApp = new WinApp;
+	WinApp *winApp = new WinApp(L"CG2");
 
 	MSG msg{};
 

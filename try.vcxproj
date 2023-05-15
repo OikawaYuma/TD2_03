@@ -84,14 +84,14 @@
   <ItemGroup>
     <ClCompile Include="DirX.cpp" />
     <ClCompile Include="Draw.cpp" />
-    <ClCompile Include="fun.cpp" />
+    <ClCompile Include="function.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="WinApp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DirX.h" />
     <ClInclude Include="Draw.h" />
-    <ClInclude Include="fun.h" />
+    <ClInclude Include="function.h" />
     <ClInclude Include="WinApp.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

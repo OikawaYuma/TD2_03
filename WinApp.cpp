@@ -1,12 +1,27 @@
 ﻿#include "WinApp.h"
 #include <Windows.h>
-#include"fun.h"
+#include<string>
 
-WinApp::WinApp() {
+
+
+LRESULT  WinApp::WindowProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
+	// メッセージに応じてゲーム固有の処理を行う
+	switch (msg) {
+		// ウィンドウが破棄された
+	case WM_DESTROY:
+		// OSに対して、アプリ終了を伝える
+		PostQuitMessage(0);
+		return 0;
+	}
+	// 標準のメッセージ処理を行う
+	return DefWindowProc(hwnd, msg, wparam, lparam);
+};
+WinApp::WinApp(const wchar_t*label) {
+	
 	// ウィンドウプロシージャ
 	wc.lpfnWndProc = WindowProc;
 	// ウィンドウクラス名（なんでも良い）
-	wc.lpszClassName = L"CG2WindowClass";
+	wc.lpszClassName = label;
 	// インスタンスハンドル
 	wc.hInstance = GetModuleHandle(nullptr);
 	// カーソル
@@ -24,7 +39,7 @@ WinApp::WinApp() {
 	// ウィンドウの生成
 	HWND hwnd = CreateWindow(
 		wc.lpszClassName,        // 利用するクラス名
-		L"CG2",					 // タイトルバーの文字（何でも良い）
+		label,					 // タイトルバーの文字（何でも良い）
 		WS_OVERLAPPEDWINDOW,	 // よく見るウィンドウスタイル
 		CW_USEDEFAULT,			 // 表示X座標（Windowsに任せる）
 		CW_USEDEFAULT,			 // 表示Y座標（WindowsOSに任せる）
@@ -38,3 +53,8 @@ WinApp::WinApp() {
 	// ウィンドウを表示する
 	ShowWindow(hwnd, SW_SHOW);
 }
+
+
+
+
+
